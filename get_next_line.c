@@ -6,7 +6,7 @@
 /*   By: jcoetzee <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 14:51:16 by jcoetzee          #+#    #+#             */
-/*   Updated: 2019/07/04 15:00:45 by jcoetzee         ###   ########.fr       */
+/*   Updated: 2019/07/05 08:40:57 by jcoetzee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static char	*ft_makeline(char **line, char *tmp)
 	size_t	n;
 	char	*fr;
 
+	n = 0;
 	while (tmp[n] != '\n' && tmp[n] != '\0')
 		n++;
 	*line = ft_strsub(tmp, 0, n);
@@ -37,7 +38,7 @@ static char	*ft_makeline(char **line, char *tmp)
 		ft_strdel(&tmp);
 	else
 	{
-		fr = tm;
+		fr = tmp;
 		tmp = ft_strdup(tmp + n + 1);
 		free(fr);
 	}
@@ -47,7 +48,7 @@ static char	*ft_makeline(char **line, char *tmp)
 int			get_next_line(const int fd, char **line)
 {
 	size_t		ret;
-	char		*buf[BUFF_SIZE + 1];
+	char		buf[BUFF_SIZE + 1];
 	static char *arr[1024];
 
 	if (BUFF_SIZE < 1 || fd < 0 || !line || read(fd, buf, 0) < 0)

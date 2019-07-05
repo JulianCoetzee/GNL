@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcoetzee <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/26 14:52:50 by jcoetzee          #+#    #+#             */
-/*   Updated: 2019/07/05 16:17:49 by jcoetzee         ###   ########.fr       */
+/*   Created: 2019/05/20 13:19:43 by jcoetzee          #+#    #+#             */
+/*   Updated: 2019/06/18 16:07:31 by jcoetzee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <string.h>
-# include <stdlib.h>
+char	*ft_strmap(const char *str, char (*f)(char))
+{
+	size_t	i;
+	char	*nstr;
 
-# define BUFF_SIZE 100
-
-int					get_next_line(const int fd, char **line);
-
-#endif
+	if (str == NULL)
+		return (NULL);
+	i = 0;
+	nstr = (char *)malloc(sizeof(char) * (ft_strlen(str)) + 1);
+	if (nstr == NULL)
+		return (NULL);
+	while (str[i] != '\0')
+	{
+		nstr[i] = f(str[i]);
+		i++;
+	}
+	nstr[i] = '\0';
+	return (nstr);
+}
