@@ -6,7 +6,7 @@
 #    By: jcoetzee <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/29 10:05:47 by jcoetzee          #+#    #+#              #
-#    Updated: 2019/06/19 16:56:17 by jcoetzee         ###   ########.fr        #
+#    Updated: 2019/09/12 08:42:42 by jcoetzee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ FLAGS = -Wall -Werror -Wextra
 NAME = libft.a
 
 SRCS = ft_atoi.c \
+	   ft_atoll.c\
 		ft_bzero.c \
 		ft_isalnum.c\
 		ft_isalpha.c\
@@ -97,4 +98,4 @@ fclean: clean
 re: fclean all
 
 
-.PHONY: all, clean, fclean, re
+.PHONY: all clean fclean re
